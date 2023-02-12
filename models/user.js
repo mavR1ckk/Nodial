@@ -4,9 +4,7 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
-      min: 3,
-      max: 20,
+      require: true
     },
     email: {
       type: String,
@@ -17,6 +15,14 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 6,
     },
+    password: {
+      type: String,
+      required: true
+    },
+    gender: {
+      type : String,
+      required: true
+    }
   },
   { timestamps: true }
 );

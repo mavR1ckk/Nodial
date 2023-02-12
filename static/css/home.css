@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    background-color: rgb(32, 32, 32);    
+    color: aliceblue;
+}
+
+.font-22{
+    font-size: 22px;
+}
+
+#page-header{
+    text-align: center;
+}
+
+.center-align{    
+    justify-content: center;
+    align-items: center;
+}
+
+/* home page style */
+
+.home_page{
+    flex-direction: column;
+}
+
+#sign-up-btn {
+    
+}
+
