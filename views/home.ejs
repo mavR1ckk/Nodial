@@ -1,10 +1,77 @@
-<html>
-    <head>
-        <title>
-            <%= title %>
-        </title>
-    </head>
-    <body>
-        <h1>Nodial / <%= title %></h1>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <style>
+        body {
+            margin: 0 10%;
+        }
+
+        .list_row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #page-header {
+            text-align: center;
+            margin-top: 25px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="page-header"> My To-Do List</h1>
+    </h1>
+    <div id="main_div">
+        <ul>
+            <li class="list_row">
+                <h3 id="name">
+                    <%= user.name %>
+                </h3>
+                <h3>
+                    <%= user.phone %>
+                </h3>
+                <h3>
+                    <%= user.email %>
+                </h3>
+                <h3>
+                    <%= user._id %>
+                </h3>
+                <a href="user/delete?id=<%= user._id %>">
+                    <button>Delete</button>
+                </a>
+            </li>
+            
+            <% for (user of users) { %>
+                <li class="list_row">
+                    <h3 id="name">
+                        <%= user.name %>
+                    </h3>
+                    <h3>
+                        <%= user.phone %>
+                    </h3>
+                    <h3>
+                        <%= user.email %>
+                    </h3>
+                    <h3>
+                        <%= user._id %>
+                    </h3>
+                    <a href="user/delete?id=<%= user._id %>">
+                        <button>Delete</button>
+                    </a>
+                </li>
+                <% } %>
+        </ul>
+
+    </div>
+</body>
+
 </html>

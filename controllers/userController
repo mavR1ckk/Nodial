@@ -1,0 +1,34 @@
+const User = require('../models/User')
+
+module.exports.user = function (req, res) {
+    var userData = {
+        name: 'asfsf',
+        phone: '9503698655',
+        email: 'afdfg@gmail.com'
+    }
+
+    User.create(userData, function (err, data) {
+        if (err) {
+            console.log("Error while storing data!!! : " + err);
+            return res.redirect('back');
+        }
+        else {
+            console.log(data);
+            return res.redirect('back');
+        }
+    });
+}
+
+module.exports.deleteUser = function (req, res) {
+
+    var id = req.query.id;
+
+    User.findByIdAndDelete(id, function(err, response){
+        if(err){
+            console.log(`Error while deleting user with ID : ${id} : ${err}`);
+        }
+        else{
+            return res.redirect('back');
+        }
+    })
+}
