@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/header.css">
 </head>
+
 <body>
     <div class="header-container">
         <div>
-            <h2 id="page-header">Nodial</h2>
+            <a class="page-header" href="/">
+                <h2>Nodial</h2>
+            </a>
         </div>
         <div>
-            <a href="/" class="font-22 btn btn-light"> Sign in</a>
-            <a href="/user/signUpPage" class="font-22 btn btn-light"> Sign up</a>
+            <% if (locals.user) {%>
+                <a href="/user/profile" class="font-22 btn btn-light"> <%= user.name  %></a>
+                <a href="/user/logOut" class="font-22 btn btn-light"> Log out</a>
+            <% }else{ %>
+                <a href="/user/signIn" class="font-22 btn btn-light"> Sign in</a>
+                <a href="/user/signUpPage" class="font-22 btn btn-light"> Sign up</a>
+            <% } %>                        
         </div>
     </div>
 </body>
-</html>
 
+</html>
