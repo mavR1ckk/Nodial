@@ -6,7 +6,6 @@ module.exports.home = function (req, res) {
         if (err) {
             console.log("Error while fetching the data!!!")
         } else {
-            
             return res.render('home', {
                 title: 'home',
                 users: data

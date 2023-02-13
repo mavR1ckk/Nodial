@@ -1,0 +1,22 @@
+$color_1: aliceblue;
+$background-color_1: rgb(32, 32, 32);
+
+/* home page style */
+body {
+	margin: 0;
+	background-color: $background-color_1;
+	color: $color_1;
+}
+.font-22 {
+	font-size: 22px;
+}
+#page-header {
+	text-align: left;
+}
+.center-align {
+	justify-content: center;
+	align-items: center;
+}
+.home_page {
+	flex-direction: column;
+}
