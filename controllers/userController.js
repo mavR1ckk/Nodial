@@ -1,11 +1,14 @@
-const User = require('../models/User')
+const User = require('../models/User');
+const utility = require('../utility/utility');
 
 
 module.exports = {
     deleteUser: deleteUser,
     signUpPage: signUpPage,
     signUp: signUp,
-    signIn: signIn
+    profilePage: profilePage,
+    errorPage: errorPage,
+    signInPage:signInPage
 }
 
 function deleteUser(req, res) {
@@ -22,48 +25,49 @@ function deleteUser(req, res) {
     })
 }
 
-function signIn(req, res) {
-    var body = req.body;
-    User.findOne({ email: body.email }, (err, user) => {
-        if (err) {
-            console.log("Error While fetching the user from DB");
-            return res.redirect('back');
-        }
-        else {
-            if (user.password === body.password) {
-                console.log("Log in success!!");
-                return res.render('dashboard', {
-                    user: user
-                });
-            }
-            else {
-                console.log("User not valid!!");
-                return res.redirect('back');
-            }
-        }
-    })
-}
-
 function signUpPage(req, res, next) {
+    if(req.isAuthenticated()){
+        return res.redirect('/user/profile');
+    }
     return res.render('sign-up');
 }
 
 function signUp(req, res) {
     var user = req.body;
-
-    console.log(user);
-    console.log("Creating user");
-
-    User.create(user, (err, data) => {
-        if (err) {
-            console.log(`Error while creating user : ${user.email} Error: ${err}`);
-            return res.redirect('back');
-        }
+    User.findOne({ email: user.email }, (err, userDB) => {
+        if (userDB) return res.status(400).redirect('back');
         else {
-            console.log(`User Created ${data.id}`);
-            return res.render('dashboard', {
-                user: data
-            });
+            user.username = user.email;
+            User.create(user, (err, data) => {
+                if (err) {
+                    console.log(`Error while creating user : ${user.email} Error: ${err}`);
+                    return res.redirect('back');
+                }
+                else {
+                    console.log(`User Created ${data.id}`);
+                    return res.render('dashboard', {
+                        user: data
+                    });
+                }
+            })
         }
+    });
+}
+
+function profilePage(req, res) {
+    utility.setAuthenticated(req,res);
+    res.render('dashboard', {
+        name: 'login success'
     })
+}
+
+function errorPage(req, res) {
+    res.render('errorPage');
+}
+
+function signInPage(req, res) {
+    if(req.isAuthenticated()){
+        return res.redirect('/user/profile');
+    }
+    res.render('sign_in');
 }
