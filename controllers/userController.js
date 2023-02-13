@@ -71,15 +71,16 @@ function signUp(req, res) {
 }
 
 function createSession(req, res) {
-    console.log("yesy");
+    console.log(req.user);
     return res.render('dashboard',{
-        user: 'Test'
+        name:"test"
     });
 }
 
 function profilePage(req, res) {
+    console.log(req.user);
     console.log(req.cookies);
     return res.render('dashboard', {
-        user: 'Test'
+        user: req.user
     })
 }

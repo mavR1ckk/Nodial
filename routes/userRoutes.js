@@ -8,7 +8,7 @@ router.get('/delete', userController.deleteUser);
 // router.post('/signIn', userController.signIn);
 router.get('/signUpPage', userController.signUpPage);
 router.post('/signUp', userController.signUp);
-router.get('/dashboard', userController.profilePage);
+router.get('/dashboard',passport.checkAuthentication, userController.profilePage);
 
 
 //Use passport as middleware to authenticate

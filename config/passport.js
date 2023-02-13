@@ -39,8 +39,8 @@ passport.deserializeUser(function (id, done) {
 });
 
 passport.checkAuthentication = function(req, res, next){
-    if(req.isAuthenticated()){
-        console.log('user noot auth');
+    if(req.user){
+        console.log(req.user);
         return next();
     }
 
@@ -51,8 +51,8 @@ passport.checkAuthentication = function(req, res, next){
 }
 
 passport.setAuthenticatedUser = function(req, res, next){
-    if(req.isAuthenticated()){
-        console.log('user noot auth');
+    if(req.user){
+        console.log(req.user);
         res.locals.user = req.user;
     }
     else{
