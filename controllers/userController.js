@@ -5,7 +5,9 @@ module.exports = {
     deleteUser: deleteUser,
     signUpPage: signUpPage,
     signUp: signUp,
-    signIn: signIn
+    signIn: signIn,
+    createSession: createSession,
+    profilePage: profilePage
 }
 
 function deleteUser(req, res) {
@@ -65,5 +67,19 @@ function signUp(req, res) {
                 user: data
             });
         }
+    })
+}
+
+function createSession(req, res) {
+    console.log("yesy");
+    return res.render('dashboard',{
+        user: 'Test'
+    });
+}
+
+function profilePage(req, res) {
+    console.log(req.cookies);
+    return res.render('dashboard', {
+        user: 'Test'
     })
 }
