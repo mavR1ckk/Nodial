@@ -9,7 +9,7 @@ body {
 }
 
 #page-header{
-    text-align: center;
+    text-align: left;
 }
 
 .center-align{    
@@ -27,3 +27,15 @@ body {
     
 }
 
+
+/* Header style */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 1rem;
+}
+
+.header-container a {
+    margin: 0 0.5rem;
+}
