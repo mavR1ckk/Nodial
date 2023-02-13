@@ -15,5 +15,5 @@ app.listen(port, function(err){
     if(err){
         console.log(`Error occured during starting express ${port}`)
     }
-    console.log(`Server is started on port: ${port} successfully!!!`);
+    console.log(`Server is started on http://localhost:${port} successfully!!!`);
 })
