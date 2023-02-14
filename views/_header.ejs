@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="header-container">
+    <div class="header-container mb-3">
         <div>
             <a class="page-header" href="/">
                 <h2>Nodial</h2>
@@ -17,11 +17,11 @@
         </div>
         <div>
             <% if (locals.user) {%>
-                <a href="/user/profile" class="font-22 btn btn-light"> <%= user.name  %></a>
-                <a href="/user/logOut" class="font-22 btn btn-light"> Log out</a>
+                <a href="/user/profile" class="font-22 btn btn-secondary"> <%= user.name  %></a>
+                <a href="/user/logOut" class="font-22 btn btn-primary"> Log out</a>
             <% }else{ %>
-                <a href="/user/signIn" class="font-22 btn btn-light"> Sign in</a>
-                <a href="/user/signUpPage" class="font-22 btn btn-light"> Sign up</a>
+                <a href="/user/signIn" class="font-22 btn btn-success"> Sign in</a>
+                <a href="/user/signUpPage" class="font-22 btn btn-info"> Sign up</a>
             <% } %>                        
         </div>
     </div>

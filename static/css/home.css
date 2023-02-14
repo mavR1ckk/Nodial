@@ -1,7 +1,8 @@
 body {
     margin: 0;
-    background-color: rgb(32, 32, 32);    
-    color: aliceblue;
+    /* /background-color: rgb(32, 32, 32);     */
+    color: rgb(28, 29, 29);
+    background-color: rgb(202 218 249 / 86%);
 }
 
 .font-22{
@@ -13,7 +14,7 @@ body {
 }
 
 .page-header {
-    color: aliceblue;
+    color: rgb(28, 29, 29);
     text-decoration: none;
 }
 
@@ -43,10 +44,51 @@ body {
 .header-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: row;
-    margin: 1rem;
+    margin: 0;
+    background-color: whitesmoke;
 }
 
 .header-container a {
     margin: 0 0.5rem;
 }
+
+
+/* Style form posts */
+.post-form {
+    flex-direction: column;
+    width: 100%;
+}
+
+.post-form-section {
+    text-align: center;
+}
+
+.form-text {
+    color: rgb(32, 32, 32); ;
+}
+
+.profile-container{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+}
+
+/* card style */
+.card-img{
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.post-section {
+    width: 65%;
+}
+
+.post-container{
+    display: flex;
+}
+

@@ -1,14 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+        <%= user.name %>
+    </title>
 </head>
+
 <body>
 
-    <h1><%= user.name %></h1>
-    
+    <div>
+        <section class="post-form-section container">
+            <form action="/post/createPost" method="post" class="post-form">
+                <div>
+                    <h4>Whats in your Mind???</h4>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Heading !!!" required="true" name="topic">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                            placeholder="Share your thoughts !!!" rows="3" name="content"></textarea>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" value="Post" class="btn btn-primary">Post content</button>
+                </div>
+            </form>
+        </section>
+
+        <div class="profile-container">
+            <div class="col-3">
+                <h1>Abhinath jadhav</h1>
+            </div>
+            
+            <div class="col-6 mt-3">
+                <% for (post of posts) {%>
+                <div class="card mb-3">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title"> <%= post.topic %></h5>
+                      <p>
+                        <%= post.content %>
+                      </p>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <img src="/images/img.jpg" class="card-img-top" alt="...">
+                      <p class="card-text"><small class="text-muted"><%= post.user.name %></small></p>
+                    </div>
+                  </div>
+                  <% } %>
+            </div>   
+            <div class="col-3">
+                <ul>
+                    <% for (user of users) {%>
+                        <li>
+                            <%= user.name %>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>         
+        </div>
 </body>
+
 </html>
+
+<!-- <div class="col-3">
+                <!-- <ul>
+                    <% for (user of users) {%>
+                        <li>
+                            <%= user.name %>
+                        </li>
+                        <% } %>
+                </ul> -->
+            </div> -->
+
+            <!-- <div class="mt-3">
+                <% for (post of posts) {%>
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="/images/img.jpg" class="card-img-bottom card-img" alt="...">
+                            <h5 class="card-title card-text mt-2">
+                                <%= post.topic %>
+                            </h5>
+                            <p class="card-text mt-2">
+                                <%= post.content %>
+                            </p>
+                            <p class="card-text mt-2"><small class="text-muted">
+                                    <%= post.user.name %>
+                                </small></p>
+                        </div>
+                        <% } %>
+                    </div>
+            </div> -->

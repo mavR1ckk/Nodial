@@ -36,7 +36,7 @@ module.exports.checkAuthentication = (req, res, next) =>{
         //req.isAuthenticated = true;
         return next();
     }
-    res.redirect('/');
+    return res.status(401).send('User not Authenticated!')
 }
 
 module.exports.setAuthenticated = (req, res) => {

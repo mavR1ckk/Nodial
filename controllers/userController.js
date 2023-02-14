@@ -1,3 +1,4 @@
+const Post = require('../models/Post');
 const User = require('../models/User');
 const utility = require('../utility/utility');
 
@@ -8,13 +9,13 @@ module.exports = {
     signUp: signUp,
     profilePage: profilePage,
     errorPage: errorPage,
-    signInPage:signInPage
+    signInPage: signInPage,
+    logOut: logOut
 }
 
+// delete User
 function deleteUser(req, res) {
-
     var id = req.query.id;
-
     User.findByIdAndDelete(id, function (err, response) {
         if (err) {
             console.log(`Error while deleting user with ID : ${id} : ${err}`);
@@ -25,13 +26,7 @@ function deleteUser(req, res) {
     })
 }
 
-function signUpPage(req, res, next) {
-    if(req.isAuthenticated()){
-        return res.redirect('/user/profile');
-    }
-    return res.render('sign-up');
-}
-
+// Create new User
 function signUp(req, res) {
     var user = req.body;
     User.findOne({ email: user.email }, (err, userDB) => {
@@ -54,20 +49,41 @@ function signUp(req, res) {
     });
 }
 
-function profilePage(req, res) {
-    utility.setAuthenticated(req,res);
+// Profile page
+async function profilePage(req, res) {
+    utility.setAuthenticated(req, res);
+    var posts = await Post.find({user: req.user.id}).populate('user').exec();
+    var users = await User.find({});
     res.render('dashboard', {
-        name: 'login success'
+        posts : posts,
+        users : users
     })
+    
 }
 
 function errorPage(req, res) {
     res.render('errorPage');
 }
 
+// Sign in page
 function signInPage(req, res) {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
         return res.redirect('/user/profile');
     }
     res.render('sign_in');
+}
+
+// sign up Page
+function signUpPage(req, res, next) {
+    if (req.isAuthenticated()) {
+        return res.redirect('/user/profile');
+    }
+    return res.render('sign-up');
+}
+
+// Log out function
+function logOut(req, res) {
+    req.logout(() => {
+        return res.redirect('/');
+    });
 }

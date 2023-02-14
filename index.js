@@ -28,7 +28,7 @@ app.use(expressSession(
         store: MongoStore.create(
             {
                 mongoUrl: 'mongodb://localhost/nodial',
-                autoRemove: 'disabled'
+                autoRemove: 'enabled'
             },
             (err)=>{
                 console.log(err || 'Connected mongoStore Ok');

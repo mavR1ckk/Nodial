@@ -17,6 +17,7 @@ router.post('/signIn', passport.authenticate(
 router.get('/signIn', userController.signInPage)
 router.get('/signUpPage', userController.signUpPage);
 router.post('/signUp',  userController.signUp);
+router.get('/logOut',  userController.logOut);
 router.get('/profile', auth.checkAuthentication, userController.profilePage);
 router.get('/error', userController.errorPage);
 
